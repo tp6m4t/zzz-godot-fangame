@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://wq51wu0rr03l"]
+
+[ext_resource type="Script" uid="uid://u1mpkc6f3y33" path="res://scenes/charachters/player/player.gd" id="1_5ks1v"]
+[ext_resource type="Script" uid="uid://cb6lrmajip167" path="res://scripts/state_machine/node_state_machine.gd" id="3_4mnwy"]
+[ext_resource type="Script" uid="uid://0ve5gddgbko5" path="res://scenes/charachters/bangboo/bangboo_idle_state.gd" id="4_yd7ke"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5o5yb"]
+load_path = "res://.godot/imported/像素邦布.png-5b6ec74cd57a236b4b07c0836bcd9807.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oupjv"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kim0p"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ggnj"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq5r5"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7l2v"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8y5v"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnw8o"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ptqw"]
+atlas = SubResource("CompressedTexture2D_5o5yb")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1i4kf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oupjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kim0p")
+}],
+"loop": true,
+"name": &"idle_back",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ggnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq5r5")
+}],
+"loop": true,
+"name": &"idle_front",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7l2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8y5v")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnw8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ptqw")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmnqw"]
+
+[node name="BangbooBase" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_5ks1v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -31)
+sprite_frames = SubResource("SpriteFrames_1i4kf")
+animation = &"idle_left"
+frame_progress = 0.306876
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_dmnqw")
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("3_4mnwy")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("4_yd7ke")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")

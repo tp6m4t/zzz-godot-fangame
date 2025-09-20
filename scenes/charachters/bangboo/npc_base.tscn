@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3 uid="uid://c8jbu22em21dx"]
+
+[ext_resource type="Script" uid="uid://b24abple17n4x" path="res://scenes/charachters/bangboo/role.gd" id="1_yqns6"]
+[ext_resource type="Texture2D" uid="uid://t6k40bmdq88i" path="res://assets/像素邦布.png" id="2_bqhju"]
+[ext_resource type="Script" uid="uid://cb6lrmajip167" path="res://scripts/state_machine/node_state_machine.gd" id="2_yqns6"]
+[ext_resource type="Script" uid="uid://3tghv6n62kl6" path="res://scenes/charachters/bangboo/npc_walk_state.gd" id="4_xns0c"]
+[ext_resource type="Script" uid="uid://dpmasn0cwo70g" path="res://scenes/charachters/bangboo/npc_idle_state.gd" id="4_yqns6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vvve"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvxg1"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq5tx"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83865"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjivd"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enase"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyree"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4epqr"]
+atlas = ExtResource("2_bqhju")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1i4kf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vvve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvxg1")
+}],
+"loop": true,
+"name": &"idle_back",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq5tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83865")
+}],
+"loop": true,
+"name": &"idle_front",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjivd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enase")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyree")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4epqr")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmnqw"]
+
+[node name="NPC" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_yqns6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -31)
+sprite_frames = SubResource("SpriteFrames_1i4kf")
+animation = &"idle_back"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_dmnqw")
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("2_yqns6")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("NPC", "animated_sprite_2d")]
+script = ExtResource("4_yqns6")
+NPC = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("NPC", "animated_sprite_2d")]
+script = ExtResource("4_xns0c")
+NPC = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
