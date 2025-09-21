@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=4 uid="uid://cn4j5r1uih1me"]
+
+[ext_resource type="Texture2D" uid="uid://davj1nf0b5d5p" path="res://assets/test_tile.png" id="1_175jm"]
+[ext_resource type="Script" uid="uid://bgdl36qdp3etl" path="res://scenes/adventurous/rogue_adventurous.gd" id="1_vvyqa"]
+[ext_resource type="Script" uid="uid://82crwqh2lsgx" path="res://scenes/adventurous/camera_2d.gd" id="3_1pior"]
+[ext_resource type="Texture2D" uid="uid://t6k40bmdq88i" path="res://assets/像素邦布.png" id="3_84xfk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvyqa"]
+texture = ExtResource("1_175jm")
+texture_region_size = Vector2i(64, 64)
+7:0/0 = 0
+8:0/size_in_atlas = Vector2i(2, 2)
+8:0/0 = 0
+0:2/size_in_atlas = Vector2i(2, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 32)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+0:10/size_in_atlas = Vector2i(3, 3)
+0:10/0 = 0
+0:10/0/texture_origin = Vector2i(0, 64)
+3:10/size_in_atlas = Vector2i(3, 3)
+3:10/0 = 0
+3:10/0/texture_origin = Vector2i(0, 64)
+6:10/size_in_atlas = Vector2i(3, 3)
+6:10/0 = 0
+6:10/0/texture_origin = Vector2i(0, 64)
+0:13/size_in_atlas = Vector2i(3, 3)
+0:13/0 = 0
+0:13/0/texture_origin = Vector2i(0, 64)
+3:13/size_in_atlas = Vector2i(3, 3)
+3:13/0 = 0
+3:13/0/texture_origin = Vector2i(0, 64)
+6:13/size_in_atlas = Vector2i(3, 3)
+6:13/0 = 0
+6:13/0/texture_origin = Vector2i(0, 64)
+13:1/0 = 0
+13:1/0/terrain_set = 0
+13:1/0/terrain = 0
+13:1/0/terrains_peering_bit/right_side = 0
+13:1/0/terrains_peering_bit/bottom_side = 0
+13:1/0/terrains_peering_bit/left_side = 0
+13:1/0/terrains_peering_bit/top_side = 0
+12:0/0 = 0
+12:0/0/terrain_set = 0
+12:0/0/terrain = 0
+12:0/0/terrains_peering_bit/right_side = 0
+12:0/0/terrains_peering_bit/bottom_side = 0
+12:1/0 = 0
+12:1/0/terrain_set = 0
+12:1/0/terrain = 0
+12:1/0/terrains_peering_bit/right_side = 0
+12:1/0/terrains_peering_bit/bottom_side = 0
+12:1/0/terrains_peering_bit/top_side = 0
+12:2/0 = 0
+12:2/0/terrain_set = 0
+12:2/0/terrain = 0
+12:2/0/terrains_peering_bit/right_side = 0
+12:2/0/terrains_peering_bit/top_side = 0
+13:2/0 = 0
+13:2/0/terrain_set = 0
+13:2/0/terrain = 0
+13:2/0/terrains_peering_bit/right_side = 0
+13:2/0/terrains_peering_bit/left_side = 0
+13:2/0/terrains_peering_bit/top_side = 0
+14:2/0 = 0
+14:2/0/terrain_set = 0
+14:2/0/terrain = 0
+14:2/0/terrains_peering_bit/left_side = 0
+14:2/0/terrains_peering_bit/top_side = 0
+14:1/0 = 0
+14:1/0/terrain_set = 0
+14:1/0/terrain = 0
+14:1/0/terrains_peering_bit/bottom_side = 0
+14:1/0/terrains_peering_bit/left_side = 0
+14:1/0/terrains_peering_bit/top_side = 0
+14:0/0 = 0
+14:0/0/terrain_set = 0
+14:0/0/terrain = 0
+14:0/0/terrains_peering_bit/bottom_side = 0
+14:0/0/terrains_peering_bit/left_side = 0
+13:0/0 = 0
+13:0/0/terrain_set = 0
+13:0/0/terrain = 0
+13:0/0/terrains_peering_bit/right_side = 0
+13:0/0/terrains_peering_bit/bottom_side = 0
+13:0/0/terrains_peering_bit/left_side = 0
+15:0/0 = 0
+15:0/0/terrain_set = 0
+15:0/0/terrain = 0
+15:0/0/terrains_peering_bit/bottom_side = 0
+15:1/0 = 0
+15:1/0/terrain_set = 0
+15:1/0/terrain = 0
+15:1/0/terrains_peering_bit/bottom_side = 0
+15:1/0/terrains_peering_bit/top_side = 0
+15:2/0 = 0
+15:2/0/terrain_set = 0
+15:2/0/terrain = 0
+15:2/0/terrains_peering_bit/top_side = 0
+15:3/0 = 0
+15:3/0/terrain_set = 0
+15:3/0/terrain = 0
+14:3/0 = 0
+14:3/0/terrain_set = 0
+14:3/0/terrain = 0
+14:3/0/terrains_peering_bit/left_side = 0
+13:3/0 = 0
+13:3/0/terrain_set = 0
+13:3/0/terrain = 0
+13:3/0/terrains_peering_bit/right_side = 0
+13:3/0/terrains_peering_bit/left_side = 0
+12:3/0 = 0
+12:3/0/terrain_set = 0
+12:3/0/terrain = 0
+12:3/0/terrains_peering_bit/right_side = 0
+
+[sub_resource type="TileSet" id="TileSet_1pior"]
+tile_size = Vector2i(64, 64)
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "wall"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_vvyqa")
+
+[node name="RogueAdventurous" type="Node2D" node_paths=PackedStringArray("tile")]
+script = ExtResource("1_vvyqa")
+tile = NodePath("TileMaps/TileMapLayer")
+
+[node name="TileMaps" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMaps"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAHAAAAAAABAAAAAAAHAAAAAAACAAAAAAAHAAAAAAADAAAAAAAHAAAAAAAAAAEAAAAHAAAAAAABAAEAAAAHAAAAAAACAAEAAAAHAAAAAAADAAEAAAAHAAAAAAAEAAEAAAAHAAAAAAAFAAEAAAAHAAAAAAAGAAEAAAAHAAAAAAAHAAEAAAAHAAAAAAAIAAEAAAAHAAAAAAAJAAEAAAAHAAAAAAAJAAAAAAAHAAAAAAAIAAAAAAAHAAAAAAAHAAAAAAAHAAAAAAAGAAAAAAAHAAAAAAAFAAAAAAAHAAAAAAAEAAAAAAAHAAAAAAACAAIAAAAHAAAAAAABAAIAAAAHAAAAAAABAAMAAAAHAAAAAAAAAAIAAAAHAAAAAAAAAAMAAAAHAAAAAAAAAAQAAAAHAAAAAAABAAQAAAAHAAAAAAACAAQAAAAHAAAAAAADAAQAAAAHAAAAAAAEAAQAAAAHAAAAAAAFAAQAAAAHAAAAAAAGAAQAAAAHAAAAAAAHAAQAAAAHAAAAAAAHAAMAAAAHAAAAAAAGAAMAAAAHAAAAAAAFAAMAAAAHAAAAAAAFAAIAAAAHAAAAAAAEAAIAAAAHAAAAAAAEAAMAAAAHAAAAAAADAAMAAAAHAAAAAAADAAIAAAAHAAAAAAACAAMAAAAHAAAAAAAGAAIAAAAHAAAAAAAHAAIAAAAHAAAAAAAIAAIAAAAHAAAAAAAJAAIAAAAHAAAAAAAKAAIAAAAHAAAAAAAJAAMAAAAHAAAAAAAJAAQAAAAHAAAAAAAIAAQAAAAHAAAAAAAIAAMAAAAHAAAAAAAKAAMAAAAHAAAAAAAKAAQAAAAHAAAAAAALAAIAAAAHAAAAAAALAAEAAAAHAAAAAAALAAAAAAAHAAAAAAAKAAAAAAAHAAAAAAAKAAEAAAAHAAAAAAALAAMAAAAHAAAAAAALAAQAAAAHAAAAAAAAAAUAAAANAAMAAAABAAUAAAANAAMAAAACAAUAAAANAAMAAAADAAUAAAANAAMAAAAEAAUAAAANAAMAAAAFAAUAAAAEAAAAAAAGAAUAAAANAAMAAAAHAAUAAAANAAMAAAAIAAUAAAANAAMAAAAJAAUAAAANAAMAAAAKAAUAAAANAAMAAAALAAUAAAANAAMAAAAMAAUAAAANAAIAAAAMAAQAAAAMAAEAAAAMAAMAAAAMAAEAAAAMAAIAAAAEAAAAAAAMAAEAAAAMAAIAAAAMAAAAAAAMAAEAAAAMAP//AAANAAAAAAALAP//AAANAAMAAAAKAP//AAANAAMAAAAJAP//AAANAAMAAAAIAP//AAANAAMAAAAHAP//AAANAAMAAAAGAP//AAANAAMAAAAFAP//AAAEAAEAAAAEAP//AAANAAMAAAADAP//AAANAAMAAAACAP//AAANAAMAAAABAP//AAANAAMAAAAAAP//AAANAAMAAAD/////AAAMAAAAAAD//wAAAAAPAAEAAAD//wEAAAAPAAEAAAD//wIAAAAEAAEAAAD//wMAAAAPAAEAAAD//wQAAAAPAAEAAAD//wUAAAAMAAIAAAANAAIAAAAHAAAAAAAOAAIAAAAHAAAAAAAOAAEAAAAHAAAAAAAOAAAAAAAHAAAAAAAOAP//AAAHAAAAAAAOAAMAAAAHAAAAAAAOAAQAAAAHAAAAAAAOAAUAAAAHAAAAAAAOAAYAAAAHAAAAAAANAAEAAAAOAAIAAAANAAAAAAAOAAEAAAANAP//AAAOAAEAAAANAP7/AAAMAAAAAAAOAP7/AAANAAMAAAAPAP7/AAAOAAAAAAAPAP//AAAPAAEAAAAPAAAAAAAPAAEAAAAPAAEAAAAPAAEAAAANAAMAAAAOAAAAAAANAAQAAAAOAAEAAAANAAUAAAAOAAEAAAANAAYAAAAPAAEAAAANAAcAAAAMAAIAAAAOAAcAAAANAAMAAAAPAAcAAAAOAAIAAAAPAAYAAAAPAAEAAAAPAAUAAAAPAAEAAAAPAAQAAAAPAAEAAAAPAAMAAAAPAAEAAAAPAAIAAAAPAAEAAAA=")
+tile_set = SubResource("TileSet_1pior")
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+position = Vector2(31, 32)
+texture = ExtResource("3_84xfk")
+hframes = 16
+vframes = 16
+
+[node name="Camera2D" type="Camera2D" parent="Node2D2/Sprite2D"]
+script = ExtResource("3_1pior")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D2"]
+position = Vector2(290, 97)
+texture = ExtResource("1_175jm")
+hframes = 16
+vframes = 16
+frame = 112
