@@ -2,7 +2,7 @@ extends Node
 
 @export var tile: TileMapLayer
 var map: Dungeon
-
+var player: Node
 
 func _ready() -> void:
 	map = Dungeon.new()
@@ -22,11 +22,15 @@ func _ready() -> void:
 							set_terrain.append(np)
 	tile.set_cells_terrain_connect(set_terrain, 0, 0)
 	var starting_position := tile.map_to_local(map.start_cell)
-	$Node2D2/Sprite2D.global_position = starting_position
+	player = $characters/player
+	player.get_node('Sprite2D').global_position = starting_position
 	print(map.start_cell)
 	print(starting_position)
+	$Camera2D._focus(player.get_node('Sprite2D'))
 
 	tile.set_cell(tile.map_to_local(map.end_cell), 0, Vector2i(4, 0))
+
+	$CanvasLayer/InteractiveUI.camera = $Camera2D
 
 	"""
 	tile.set_cell(Vector2i(0, 0), 0, Vector2i(4, 0))
@@ -35,19 +39,19 @@ func _ready() -> void:
 	"""
 
 func _physics_process(delta: float) -> void:
-	var cell := tile.local_to_map($Node2D2/Sprite2D.position)
+	var cell := tile.local_to_map(player.get_node('Sprite2D').position)
 	if Input.is_action_just_pressed("walk_left"):
 		if map.map_strings[cell.y][cell.x - 1] == '.':
-			$Node2D2/Sprite2D.position += Vector2.LEFT * tile.tile_set.tile_size.x
+			player.get_node('Sprite2D').position += Vector2.LEFT * tile.tile_set.tile_size.x
 	elif Input.is_action_just_pressed("walk_right"):
 		if map.map_strings[cell.y][cell.x + 1] == '.':
-			$Node2D2/Sprite2D.position += Vector2.RIGHT * tile.tile_set.tile_size.x
+			player.get_node('Sprite2D').position += Vector2.RIGHT * tile.tile_set.tile_size.x
 	elif Input.is_action_just_pressed("walk_up"):
 		if map.map_strings[cell.y - 1][cell.x] == '.':
-			$Node2D2/Sprite2D.position += Vector2.UP * tile.tile_set.tile_size.y
+			player.get_node('Sprite2D').position += Vector2.UP * tile.tile_set.tile_size.y
 	elif Input.is_action_just_pressed("walk_down"):
 		if map.map_strings[cell.y + 1][cell.x] == '.':
-			$Node2D2/Sprite2D.position += Vector2.DOWN * tile.tile_set.tile_size.y
+			player.get_node('Sprite2D').position += Vector2.DOWN * tile.tile_set.tile_size.y
 
 	
 #地圖生成類

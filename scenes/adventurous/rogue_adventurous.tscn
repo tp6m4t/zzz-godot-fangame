@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://cn4j5r1uih1me"]
+[gd_scene load_steps=10 format=4 uid="uid://cn4j5r1uih1me"]
 
 [ext_resource type="Texture2D" uid="uid://davj1nf0b5d5p" path="res://assets/test_tile.png" id="1_175jm"]
 [ext_resource type="Script" uid="uid://bgdl36qdp3etl" path="res://scenes/adventurous/rogue_adventurous.gd" id="1_vvyqa"]
 [ext_resource type="Script" uid="uid://82crwqh2lsgx" path="res://scenes/adventurous/camera_2d.gd" id="3_1pior"]
 [ext_resource type="Texture2D" uid="uid://t6k40bmdq88i" path="res://assets/像素邦布.png" id="3_84xfk"]
+[ext_resource type="Script" uid="uid://dbe8wq11kbwv8" path="res://scenes/adventurous/interactive_ui.gd" id="4_2pqdx"]
+[ext_resource type="PackedScene" uid="uid://b6f8nd8ks6y2q" path="res://ui/foucs_player.tscn" id="5_mmkhh"]
+[ext_resource type="PackedScene" uid="uid://7bwoydt1yg2k" path="res://ui/input_ui.tscn" id="5_nl7ud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvyqa"]
 texture = ExtResource("1_175jm")
@@ -138,18 +141,46 @@ tile_set = SubResource("TileSet_1pior")
 
 [node name="Node2D2" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
-position = Vector2(31, 32)
-texture = ExtResource("3_84xfk")
-hframes = 16
-vframes = 16
-
-[node name="Camera2D" type="Camera2D" parent="Node2D2/Sprite2D"]
-script = ExtResource("3_1pior")
-
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D2"]
 position = Vector2(290, 97)
 texture = ExtResource("1_175jm")
 hframes = 16
 vframes = 16
 frame = 112
+
+[node name="characters" type="Node" parent="."]
+
+[node name="player" type="Node" parent="characters"]
+
+[node name="Sprite2D" type="Sprite2D" parent="characters/player"]
+position = Vector2(31, 32)
+texture = ExtResource("3_84xfk")
+hframes = 16
+vframes = 16
+
+[node name="enemies" type="Node" parent="characters"]
+
+[node name="npcs" type="Node" parent="characters"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_1pior")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InputUi" parent="CanvasLayer" instance=ExtResource("5_nl7ud")]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.25
+
+[node name="InteractiveUI" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("camera", "focus_nodes")]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_2pqdx")
+camera = NodePath("../../Camera2D")
+button_scene = ExtResource("5_mmkhh")
+focus_nodes = [NodePath("../../characters/player/Sprite2D"), NodePath("../../Node2D2/Sprite2D2")]
