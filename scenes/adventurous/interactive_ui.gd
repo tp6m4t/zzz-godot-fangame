@@ -4,7 +4,7 @@ extends Panel
 @export var button_scene: PackedScene # 預製的圓形 Button
 
 var tracked_buttons := {} # Dictionary: unit -> button
-@export var focus_nodes: Array[Node2D]
+@export var focus_nodes: Array[Node2D] = []
 
 func _ready() -> void:
 	# 確保 Panel 填滿整個 Viewport，以便按鈕能正確顯示在邊緣
