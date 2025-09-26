@@ -2,3 +2,10 @@
 .godot/
 /android/
 .vscode/
+
+#android files
+.nomedia
+
+#macOS files
+.DS_Store/*
+.DS_Store

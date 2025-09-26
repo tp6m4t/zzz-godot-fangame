@@ -9,8 +9,12 @@ var astar_grid: AStarGrid2D = AStarGrid2D.new()
 
 
 func _load_bangboo(bangboo_name: String) -> Sprite2D:
-	var bangboo_sprite := Sprite2D.new()
-	var bangboo_texture = AtlasTexture.new()
+	var character_scene:=load('res://scenes/adventurous/adventurous_character_scene.tscn')
+		
+	var bangboo_sprite :Sprite2D= character_scene.instantiate()
+	var bangboo_texture := AtlasTexture.new()
+	
+	
 
 	var image_path := "res://assets/images/bangboo/%s_spritesheet.png" % bangboo_name
 	bangboo_texture.atlas = load(image_path)
@@ -22,7 +26,9 @@ func _load_bangboo(bangboo_name: String) -> Sprite2D:
 	return bangboo_sprite
 
 func _load_enemies(enemies_name: String) -> Sprite2D:
-	var enemies_sprite := Sprite2D.new()
+	var character_scene:=load('res://scenes/adventurous/adventurous_character_scene.tscn')
+		
+	var enemies_sprite :Sprite2D=character_scene.instantiate()
 	var enemies_texture = AtlasTexture.new()
 
 	var image_path := "res://assets/images/enemies/%s.png" % enemies_name

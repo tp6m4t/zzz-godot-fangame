@@ -1,6 +1,6 @@
 extends CharactersBase
 
-var Explode_remaining_rounds: int = 3
+var Explode_remaining_rounds: int = 10
 var is_action: bool = false
 var player: Node = null
 
@@ -32,6 +32,8 @@ func your_turn() -> void:
 
 		if hp > 0:
 			var player_cell: Vector2i = scene_manager.tile.local_to_map(player.global_position)
-			var path: Array[Vector2i] = scene_manager.astar_grid.get_point_path(my_cell, player_cell)
+			var path := scene_manager.astar_grid.get_point_path(my_cell, player_cell)
 			if path.size() > 2:
 				global_position = scene_manager.tile.map_to_local(path[1])
+			else:
+				print("can't find path (%d, %d) to (%d, %d)"%[my_cell.x,my_cell.y,player_cell.x,player_cell.y])

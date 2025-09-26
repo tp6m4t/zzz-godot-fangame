@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://cn4j5r1uih1me"]
+[gd_scene load_steps=10 format=4 uid="uid://cn4j5r1uih1me"]
 
 [ext_resource type="Texture2D" uid="uid://davj1nf0b5d5p" path="res://assets/test_tile.png" id="1_175jm"]
 [ext_resource type="Script" uid="uid://bgdl36qdp3etl" path="res://scenes/adventurous/rogue_adventurous.gd" id="1_vvyqa"]
 [ext_resource type="Script" uid="uid://82crwqh2lsgx" path="res://scenes/adventurous/camera_2d.gd" id="3_1pior"]
+[ext_resource type="PackedScene" uid="uid://dvcyaegkkgbni" path="res://scenes/adventurous/adventurous_character_scene.tscn" id="3_mmkhh"]
 [ext_resource type="Script" uid="uid://dbe8wq11kbwv8" path="res://scenes/adventurous/interactive_ui.gd" id="4_2pqdx"]
 [ext_resource type="PackedScene" uid="uid://b6f8nd8ks6y2q" path="res://ui/foucs_player.tscn" id="5_mmkhh"]
 [ext_resource type="PackedScene" uid="uid://7bwoydt1yg2k" path="res://ui/input_ui.tscn" id="5_nl7ud"]
@@ -141,6 +142,9 @@ tile_set = SubResource("TileSet_1pior")
 [node name="characters" type="Node" parent="."]
 
 [node name="player" type="Node" parent="characters"]
+
+[node name="adventurous_character_scene" parent="characters/player" instance=ExtResource("3_mmkhh")]
+position = Vector2(35, 34)
 
 [node name="enemies" type="Node" parent="characters"]
 
