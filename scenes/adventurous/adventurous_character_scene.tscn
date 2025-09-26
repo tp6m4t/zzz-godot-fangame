@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvcyaegkkgbni"]
+
+[ext_resource type="Texture2D" uid="uid://cf2m3v0mnvjsh" path="res://assets/images/bangboo/bangboo_spritesheet.png" id="1_df1wl"]
+[ext_resource type="Texture2D" uid="uid://clahnvaf22l7x" path="res://assets/images/icon/attack_icon.png" id="2_rkt73"]
+[ext_resource type="Texture2D" uid="uid://5u047wd3ab88" path="res://assets/images/icon/hp_icon.png" id="3_quvpf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkt73"]
+atlas = ExtResource("1_df1wl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gr6ex"]
+texture = ExtResource("2_rkt73")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmkhh"]
+font_size = 12
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7y827"]
+texture = ExtResource("3_quvpf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ejp7t"]
+font_color = Color(0, 1, 0, 1)
+
+[node name="adventurous_character_scene" type="Sprite2D"]
+texture = SubResource("AtlasTexture_rkt73")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="attack_label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_right = 10.0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_gr6ex")
+text = "20"
+label_settings = SubResource("LabelSettings_mmkhh")
+
+[node name="hp_label" type="Label" parent="Control"]
+layout_mode = 1
+offset_right = 19.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_7y827")
+text = "20"
+label_settings = SubResource("LabelSettings_ejp7t")
