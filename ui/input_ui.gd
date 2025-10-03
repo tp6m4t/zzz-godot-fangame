@@ -10,16 +10,16 @@ func _ready() -> void:
 	$Right.button_down.connect(_on_button_down.bind("right"))
 	$Right.button_up.connect(_on_button_up.bind("right"))
 
-
 var dir_map = {
-	"up": "walk_up",
-	"down": "walk_down",
-	"left": "walk_left",
-	"right": "walk_right"
+"up": "walk_up",
+"down": "walk_down",
+"left": "walk_left",
+"right": "walk_right"
 }
 
 func _on_button_down(direction: String) -> void:
 	Input.action_press(dir_map[direction])
 
 func _on_button_up(direction: String) -> void:
+	print(direction, 'release')
 	Input.action_release(dir_map[direction])

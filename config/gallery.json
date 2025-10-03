@@ -1,0 +1,85 @@
+{
+	"bangboo": [],
+	"enmies": [
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明1"
+		},
+		{
+			"image_path": "res://assets/images/enemies/blastcrawler.png",
+			"detail": "說明2"
+		}
+	]
+}

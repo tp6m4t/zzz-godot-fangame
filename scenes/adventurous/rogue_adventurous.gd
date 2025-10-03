@@ -9,13 +9,12 @@ var astar_grid: AStarGrid2D = AStarGrid2D.new()
 
 
 func _load_bangboo(bangboo_name: String) -> Sprite2D:
-	var character_scene:=load('res://scenes/adventurous/adventurous_character_scene.tscn')
+	var character_scene := load('res://scenes/adventurous/adventurous_character_scene.tscn')
 		
-	var bangboo_sprite :Sprite2D= character_scene.instantiate()
+	var bangboo_sprite: Sprite2D = character_scene.instantiate()
 	var bangboo_texture := AtlasTexture.new()
 	
 	
-
 	var image_path := "res://assets/images/bangboo/%s_spritesheet.png" % bangboo_name
 	bangboo_texture.atlas = load(image_path)
 	if not bangboo_texture.atlas:
@@ -26,9 +25,9 @@ func _load_bangboo(bangboo_name: String) -> Sprite2D:
 	return bangboo_sprite
 
 func _load_enemies(enemies_name: String) -> Sprite2D:
-	var character_scene:=load('res://scenes/adventurous/adventurous_character_scene.tscn')
+	var character_scene := load('res://scenes/adventurous/adventurous_character_scene.tscn')
 		
-	var enemies_sprite :Sprite2D=character_scene.instantiate()
+	var enemies_sprite: Sprite2D = character_scene.instantiate()
 	var enemies_texture = AtlasTexture.new()
 
 	var image_path := "res://assets/images/enemies/%s.png" % enemies_name
@@ -43,8 +42,11 @@ func _load_enemies(enemies_name: String) -> Sprite2D:
 func _player_turn_end() -> void:
 	print("player turn end")
 	for node: Node in node_on_map:
-		if node is CharactersBase:
-			node.your_turn()
+		if is_instance_valid(node):
+			if node is CharactersBase:
+				node.your_turn()
+		else:
+			node_on_map.erase(node)
 
 var player_name: String = "eous"
 func _ready() -> void:
@@ -71,44 +73,19 @@ func _ready() -> void:
 	node_on_map.append(enemy_sprite)
 	node_on_map.append(player_sprite)
 
-	'''
-	player = $characters/player
-	# 將玩家放在起始位置
-	player = $characters/player
-	player.get_node('Sprite2D').global_position = starting_position
-	# 讓相機跟隨玩家
-	$Camera2D._focus(player.get_node('Sprite2D'))
-'''
+	for node in node_on_map:
+		if node is CharactersBase:
+			node.tile = tile
+			node.scene_manager = self
+			node.connect("died", Callable(self, "_on_character_died"))
+			# 連接死亡信號到管理器的處理函數
+
 	tile.set_cell(tile.map_to_local(map.end_cell), 0, Vector2i(4, 0))
 
 	#相機 跟隨相關UI
 	$CanvasLayer/InteractiveUI.camera = $Camera2D
 	$CanvasLayer/InteractiveUI.focus_nodes.append(player_sprite)
 	$CanvasLayer/InteractiveUI.focus_nodes.append(enemy_sprite)
-
-	'''
-	var _d: int = 10
-	for d in range(_d):
-		for x in range(-d, d + 1):
-			for y in range(-d, d + 1):
-				if max(abs(x), abs(y)) == d:
-					var cell_pos = map.start_cell + Vector2i(x, y)
-					if cell_pos.x >= 0 and cell_pos.y >= 0 and cell_pos.x < map.map_width and cell_pos.y < map.map_height:
-						if map.map_strings[cell_pos.y][cell_pos.x] == '.' and cell_pos != map.start_cell and cell_pos != map.end_cell:
-							var npc = preload("res://scenes/adventurous/characters/blastcrawler.tscn").instantiate()
-							npc.tile = tile
-							npc.scene_manager = self
-							npc.global_position = tile.map_to_local(cell_pos)
-							add_child(npc)
-							node_on_map.append(npc)
-							break
-							'''
-	
-	"""
-	tile.set_cell(Vector2i(0, 0), 0, Vector2i(4, 0))
-	$Node2D2/Sprite2D2.global_position = tile.map_to_local(Vector2i(0, 0))
-	print(tile.map_to_local(Vector2i(1, 1)))
-	"""
 
 
 func _use_map_set_tile_map() -> void:
@@ -147,3 +124,11 @@ func get_node_on(cell_pos: Vector2i) -> Node:
 		if node_cell == cell_pos:
 			return node
 	return null
+
+
+func _on_character_died(node: Node) -> void:
+	print("character died:", node)
+	if node_on_map.has(node):
+		node_on_map.erase(node)
+	if $CanvasLayer/InteractiveUI.focus_nodes.has(node):
+		$CanvasLayer/InteractiveUI.focus_nodes.erase(node)

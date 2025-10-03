@@ -144,7 +144,7 @@ tile_set = SubResource("TileSet_1pior")
 [node name="player" type="Node" parent="characters"]
 
 [node name="adventurous_character_scene" parent="characters/player" instance=ExtResource("3_mmkhh")]
-position = Vector2(35, 34)
+position = Vector2(36, 34)
 
 [node name="enemies" type="Node" parent="characters"]
 

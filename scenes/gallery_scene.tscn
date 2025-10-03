@@ -1,0 +1,126 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmwfc4aaapvyu"]
+
+[ext_resource type="Script" uid="uid://wjychovrufxs" path="res://scenes/gallery_scene.gd" id="1_r6vci"]
+[ext_resource type="Texture2D" uid="uid://d3jpma40segqq" path="res://assets/images/enemies/blastcrawler.png" id="2_03m6l"]
+
+[node name="GalleryScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r6vci")
+
+[node name="ButtonList" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.1
+size_flags_vertical = 3
+
+[node name="Back" type="Button" parent="ButtonList"]
+layout_mode = 2
+text = "<
+"
+
+[node name="Tab" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="Tab"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.7
+anchor_bottom = 1.0
+columns = 6
+
+[node name="TextureButton" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton3" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton4" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton5" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton6" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton7" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton8" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton9" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton10" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton11" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="TextureButton12" type="TextureButton" parent="Tab/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="Detail" type="Control" parent="Tab"]
+layout_mode = 1
+anchor_left = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tab/Detail"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.3
+grow_horizontal = 2
+texture = ExtResource("2_03m6l")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Tab/Detail"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+grow_vertical = 2
+text = "說明"

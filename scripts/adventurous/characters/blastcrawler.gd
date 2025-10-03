@@ -12,9 +12,7 @@ func your_turn() -> void:
 		for x in range(-2, 3):
 			for y in range(-2, 3):
 				var node: Node = scene_manager.get_node_on(cell_pos + Vector2i(x, y))
-				print("blastcrawler find node: ", node, "x:%d y:%d" % [x, y])
 				if node is CharactersBase and node.type == CharactersBase.CharactersType.Player:
-					print("blastcrawler find player")
 					is_action = true
 					player = node
 	
@@ -36,4 +34,15 @@ func your_turn() -> void:
 			if path.size() > 2:
 				global_position = scene_manager.tile.map_to_local(path[1])
 			else:
-				print("can't find path (%d, %d) to (%d, %d)"%[my_cell.x,my_cell.y,player_cell.x,player_cell.y])
+				print("can't find path (%d, %d) to (%d, %d)" % [my_cell.x, my_cell.y, player_cell.x, player_cell.y])
+
+func _process(delta: float) -> void:
+	if is_action and Explode_remaining_rounds < 3:
+		# 閃爍頻率：回合數越少 → 越快
+		var frequency := 4.0 * (4 - Explode_remaining_rounds) # 1 回合剩下 → 頻率最大
+		var intensity := (sin(Time.get_ticks_msec() / 1000.0 * PI * frequency) + 1.0) / 2.0
+		# 用紅色閃爍
+		modulate = Color(1, intensity, intensity)
+	else:
+		# 恢復正常顏色
+		modulate = Color(1, 1, 1)

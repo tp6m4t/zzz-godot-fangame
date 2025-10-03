@@ -13,7 +13,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if camera:
 		for node in focus_nodes:
-			_update_unit_button(node)
+			if is_instance_valid(node):
+				_update_unit_button(node)
 
 func _update_unit_button(unit: Node2D) -> void:
 	# 獲取相機在世界座標中的可見矩形
