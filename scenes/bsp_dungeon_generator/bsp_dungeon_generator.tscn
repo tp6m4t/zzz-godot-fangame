@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=4 uid="uid://c85jg36c45t4s"]
+
+[ext_resource type="Script" uid="uid://cs3vm16bdo42d" path="res://scenes/bsp_dungeon_generator/bsp_dungeon_generator.gd" id="1_atlbv"]
+[ext_resource type="TileSet" uid="uid://bw2ptimgcyn4a" path="res://scenes/bsp_dungeon_generator/bsp_tile_set.tres" id="2_p6l8w"]
+[ext_resource type="Script" uid="uid://82crwqh2lsgx" path="res://scenes/adventurous/camera_2d.gd" id="3_p6l8w"]
+[ext_resource type="PackedScene" uid="uid://db05r7t68bpw5" path="res://scenes/bsp_dungeon_generator/bsp_character_scene.tscn" id="4_7vg7o"]
+
+[node name="BspDungeon" type="Node2D"]
+script = ExtResource("1_atlbv")
+
+[node name="TileMapLayers" type="Node2D" parent="."]
+
+[node name="FloorTileMapLayer" type="TileMapLayer" parent="TileMapLayers"]
+tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAA=")
+tile_set = ExtResource("2_p6l8w")
+
+[node name="WallTileMapLayer" type="TileMapLayer" parent="TileMapLayers"]
+tile_map_data = PackedByteArray("AAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAABAAcAAAACAAAAAAABAAcAAAADAAAAAAACAAYAAAADAAEAAAACAAgAAAACAAEAAAABAAcAAAACAAIAAAACAAgAAAABAAIAAAABAAgAAAAAAAIAAAABAAgAAAD//wIAAAABAAgAAAD+/wIAAAABAAgAAAD+/wEAAAABAAcAAAD+/wAAAAABAAcAAAD+////AAABAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAABAAYAAAACAP//AAACAAYAAAD//wEAAAABAAcAAAAAAAEAAAABAAcAAAABAAEAAAABAAcAAAD+/wQAAAABAAkAAAD//wQAAAABAAkAAAAAAAQAAAABAAkAAAABAAQAAAABAAkAAAACAAQAAAACAAkAAAD9/wQAAAABAAgAAAD9/wMAAAACAAcAAAD9/wIAAAABAAcAAAD9/wEAAAABAAcAAAD9/wAAAAABAAcAAAD9////AAABAAYAAAD8////AAAAAAYAAAD8/wAAAAAAAAcAAAD8/wEAAAAAAAcAAAD8/wIAAAAAAAcAAAD8/wMAAAAAAAcAAAD8/wQAAAAAAAgAAAA=")
+tile_set = ExtResource("2_p6l8w")
+
+[node name="bsp_character_scene" parent="." instance=ExtResource("4_7vg7o")]
+position = Vector2(33, 96)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_p6l8w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="back" type="Button" parent="CanvasLayer"]
+offset_right = 42.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="new_level" type="Button" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "new level"
+
+[node name="level_1" type="Button" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "level 1"

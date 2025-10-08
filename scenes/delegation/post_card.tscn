@@ -1,0 +1,164 @@
+[gd_scene load_steps=8 format=3 uid="uid://c08cq8e8pq2ud"]
+
+[ext_resource type="Texture2D" uid="uid://midcql32opk6" path="res://scenes/delegation/assets/default-cover.webp" id="1_otrdg"]
+[ext_resource type="Script" uid="uid://c47uyaieo0ey4" path="res://scenes/delegation/post_card.gd" id="1_y684f"]
+[ext_resource type="Texture2D" uid="uid://dcmlnbn6sgqtg" path="res://scenes/delegation/assets/profile-photo.webp" id="2_jmncb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtlgq"]
+bg_color = Color(0.18359044, 0.18359047, 0.18359032, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgoap"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y684f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1dvo"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[node name="PostCard" type="PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = -1
+anchor_right = 0.156
+anchor_bottom = 0.27800003
+offset_right = 0.47998047
+offset_bottom = -0.24002075
+theme_override_styles/panel = SubResource("StyleBoxFlat_wtlgq")
+script = ExtResource("1_y684f")
+
+[node name="DiscussionCard" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ImagePanel" type="PanelContainer" parent="DiscussionCard"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vgoap")
+
+[node name="TextureRect" type="TextureRect" parent="DiscussionCard/ImagePanel"]
+layout_mode = 2
+texture = ExtResource("1_otrdg")
+expand_mode = 5
+
+[node name="CardContentMargin" type="MarginContainer" parent="DiscussionCard"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 12
+
+[node name="CardContent" type="VBoxContainer" parent="DiscussionCard/CardContentMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AuthorSectionMargin" type="MarginContainer" parent="DiscussionCard/CardContentMargin/CardContent"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Container" type="Control" parent="DiscussionCard/CardContentMargin/CardContent/AuthorSectionMargin"]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="DiscussionCard/CardContentMargin/CardContent/AuthorSectionMargin/Container"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -42.0
+offset_right = 59.0
+offset_bottom = 17.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y684f")
+
+[node name="Panel2" type="Panel" parent="DiscussionCard/CardContentMargin/CardContent/AuthorSectionMargin/Container/Panel"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d1dvo")
+
+[node name="TextureRect" type="TextureRect" parent="DiscussionCard/CardContentMargin/CardContent/AuthorSectionMargin/Container/Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jmncb")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Control" type="MarginContainer" parent="DiscussionCard/CardContentMargin/CardContent/AuthorSectionMargin/Container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.156
+anchor_right = 1.029
+anchor_bottom = 0.84400004
+offset_left = 0.215
+offset_top = 0.007999897
+offset_right = -0.06201172
+offset_bottom = -0.0080013275
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+
+[node name="UserNameLabel" type="Label" parent="DiscussionCard/CardContentMargin/CardContent/AuthorSectionMargin/Container/Control"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
+theme_override_font_sizes/font_size = 14
+text = "自定義名稱三"
+text_overrun_behavior = 3
+
+[node name="ColorRect" type="ColorRect" parent="DiscussionCard/CardContentMargin/CardContent/AuthorSectionMargin/Container"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 31.0
+offset_right = 279.785
+offset_bottom = 32.0
+color = Color(0.26666668, 0.26666668, 0.26666668, 1)
+
+[node name="TextContentMargin" type="MarginContainer" parent="DiscussionCard/CardContentMargin/CardContent"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiscussionCard/CardContentMargin/CardContent/TextContentMargin"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="DiscussionCard/CardContentMargin/CardContent/TextContentMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="TitleLabel" type="Label" parent="DiscussionCard/CardContentMargin/CardContent/TextContentMargin/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "標題 標題標題標題標題標題標題標題標題"
+autowrap_mode = 3
+
+[node name="ContentLabel" type="Label" parent="DiscussionCard/CardContentMargin/CardContent/TextContentMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6706895, 0.6706895, 0.6706895, 1)
+theme_override_font_sizes/font_size = 14
+text = "內文 內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文"
+text_overrun_behavior = 3
